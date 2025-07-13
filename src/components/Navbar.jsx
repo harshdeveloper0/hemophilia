@@ -104,7 +104,7 @@ const Navbar = () => {
             </button>
           )}
         </li>
-        {/* <AdminGuard> */}
+        <AdminGuard>
           <li>
             <Link
               href="/AdminPanel/FactorInformation"
@@ -115,7 +115,7 @@ const Navbar = () => {
               </button>
             </Link>
           </li>
-        {/* </AdminGuard> */}
+        </AdminGuard>
       </ul>
 
       {/* Hamburger / Cross Button */}
@@ -203,7 +203,7 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
-            {/* <AdminGuard> */}
+            <AdminGuard>
               <li>
                 <Link
                   href="/AdminPanel/FactorInformation"
@@ -214,7 +214,7 @@ const Navbar = () => {
                   </button>
                 </Link>
               </li>
-            {/* </AdminGuard> */}
+            </AdminGuard>
           </ul>
 
           <button
