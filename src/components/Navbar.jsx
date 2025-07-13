@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import AdminGuard from "@/components/AdminGuard";
 
 const DEFAULT_IMAGE = "/images/defaultProfile.png";
 
@@ -48,13 +49,39 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6 items-center">
-        <li><Link href="/">Home</Link></li>
-        <li><Link href="/Meetings">Meetings</Link></li>
-        <li><Link href="/Hemophelia">Hemophilia</Link></li>
-        <li><Link href="/HemophiliaSymptoms">Symptoms</Link></li>
-        <li><Link href="/HemophiliaTreatment">Treatment</Link></li>
-        <li><Link href="/Camps">Camps</Link></li>
-        <li><Link href="/Contact">Contact</Link></li>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href="/Meetings">Meetings</Link>
+        </li>
+        <li>
+          <Link href="/Hemophelia">Hemophilia</Link>
+        </li>
+        <li>
+          <Link href="/HemophiliaSymptoms">Symptoms</Link>
+        </li>
+        <li>
+          <Link href="/HemophiliaTreatment">Treatment</Link>
+        </li>
+        <li>
+          <Link href="/Camps">Camps</Link>
+        </li>
+        <li>
+          <Link href="/Contact">Contact</Link>
+        </li>
+        <AdminGuard>
+          <li>
+            <Link
+              href="/adminPanel/FactorInformation"
+              onClick={toggleMobileMenu}
+            >
+              <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
+                Admin
+              </button>
+            </Link>
+          </li>
+        </AdminGuard>
 
         {session && (
           <li>
@@ -133,18 +160,60 @@ const Navbar = () => {
                 }}
                 title={session.user.name || "User"}
               />
-              <span className="font-semibold text-lg">{session.user.name || "User"}</span>
+              <span className="font-semibold text-lg">
+                {session.user.name || "User"}
+              </span>
             </div>
           )}
 
           <ul className="space-y-4">
-            <li><Link href="/" onClick={toggleMobileMenu}>Home</Link></li>
-            <li><Link href="/Meetings" onClick={toggleMobileMenu}>Meetings</Link></li>
-            <li><Link href="/Hemophelia" onClick={toggleMobileMenu}>Hemophilia</Link></li>
-            <li><Link href="/HemophiliaSymptoms" onClick={toggleMobileMenu}>Symptoms</Link></li>
-            <li><Link href="/HemophiliaTreatment" onClick={toggleMobileMenu}>Treatment</Link></li>
-            <li><Link href="/Camps" onClick={toggleMobileMenu}>Camps</Link></li>
-            <li><Link href="/Contact" onClick={toggleMobileMenu}>Contact</Link></li>
+            <li>
+              <Link href="/" onClick={toggleMobileMenu}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/Meetings" onClick={toggleMobileMenu}>
+                Meetings
+              </Link>
+            </li>
+            <li>
+              <Link href="/Hemophelia" onClick={toggleMobileMenu}>
+                Hemophilia
+              </Link>
+            </li>
+            <li>
+              <Link href="/HemophiliaSymptoms" onClick={toggleMobileMenu}>
+                Symptoms
+              </Link>
+            </li>
+            <li>
+              <Link href="/HemophiliaTreatment" onClick={toggleMobileMenu}>
+                Treatment
+              </Link>
+            </li>
+            <li>
+              <Link href="/Camps" onClick={toggleMobileMenu}>
+                Camps
+              </Link>
+            </li>
+            <li>
+              <Link href="/Contact" onClick={toggleMobileMenu}>
+                Contact
+              </Link>
+            </li>
+            <AdminGuard>
+              <li>
+                <Link
+                  href="/adminPanel/FactorInformation"
+                  onClick={toggleMobileMenu}
+                >
+                  <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
+                    Admin
+                  </button>
+                </Link>
+              </li>
+            </AdminGuard>
           </ul>
 
           <button
