@@ -56,7 +56,7 @@ const Navbar = () => {
           <Link href="/Meetings">Meetings</Link>
         </li>
         <li>
-          <Link href="/Hemophelia">Hemophilia</Link>
+          <Link href="/hemophilia">Hemophilia</Link>
         </li>
         <li>
           <Link href="/HemophiliaSymptoms">Symptoms</Link>
@@ -179,7 +179,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/Hemophelia" onClick={toggleMobileMenu}>
+              <Link href="/hemophilia" onClick={toggleMobileMenu}>
                 Hemophilia
               </Link>
             </li>
