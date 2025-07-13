@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import AdminGuard from "@/components/AdminGuard";
+import { usePWAInstall } from "@/context/PWAInstallContext";
 
 const DEFAULT_IMAGE = "/images/defaultProfile.png";
 
@@ -10,6 +11,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
   const menuRef = useRef(null);
+  const { isInstallable, installApp } = usePWAInstall(); // ✅ use hook
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -49,28 +51,24 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6 items-center">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/Meetings">Meetings</Link>
-        </li>
-        <li>
-          <Link href="/hemophilia">Hemophilia</Link>
-        </li>
-        <li>
-          <Link href="/HemophiliaSymptoms">Symptoms</Link>
-        </li>
-        <li>
-          <Link href="/HemophiliaTreatment">Treatment</Link>
-        </li>
-        <li>
-          <Link href="/Camps">Camps</Link>
-        </li>
-        <li>
-          <Link href="/Contact">Contact</Link>
-        </li>
-        
+        <li><Link href="/">Home</Link></li>
+        <li><Link href="/Meetings">Meetings</Link></li>
+        <li><Link href="/hemophilia">Hemophilia</Link></li>
+        <li><Link href="/HemophiliaSymptoms">Symptoms</Link></li>
+        <li><Link href="/HemophiliaTreatment">Treatment</Link></li>
+        <li><Link href="/Camps">Camps</Link></li>
+        <li><Link href="/Contact">Contact</Link></li>
+
+        {isInstallable && (
+          <li>
+            <button
+              onClick={installApp}
+              className="bg-green-600 text-white px-3 py-1 rounded-md font-medium hover:bg-green-700 transition-all"
+            >
+              📲 Install App
+            </button>
+          </li>
+        )}
 
         {session && (
           <li>
@@ -104,13 +102,11 @@ const Navbar = () => {
             </button>
           )}
         </li>
+
         <AdminGuard>
           <li>
-            <Link
-              href="/AdminPanel/FactorInformation"
-              onClick={toggleMobileMenu}
-            >
-              <button className="bg-zinc-600 text-white text-center py-1 px-4 rounded-md w-full font-semibold">
+            <Link href="/AdminPanel/FactorInformation">
+              <button className="bg-zinc-600 text-white py-1 px-4 rounded-md font-semibold">
                 Admin
               </button>
             </Link>
@@ -118,27 +114,15 @@ const Navbar = () => {
         </AdminGuard>
       </ul>
 
-      {/* Hamburger / Cross Button */}
+      {/* Hamburger */}
       <button
         onClick={toggleMobileMenu}
         className="md:hidden flex flex-col justify-center items-center space-y-1 z-50 relative"
         aria-label="Toggle Menu"
       >
-        <div
-          className={`w-6 h-0.5 bg-white transition-transform duration-300 ${
-            isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-          }`}
-        />
-        <div
-          className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-0" : ""
-          }`}
-        />
-        <div
-          className={`w-6 h-0.5 bg-white transition-transform duration-300 ${
-            isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-          }`}
-        />
+        <div className={`w-6 h-0.5 bg-white transition-transform duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""}`} />
+        <div className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-0" : ""}`} />
+        <div className={`w-6 h-0.5 bg-white transition-transform duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""}`} />
       </button>
 
       {/* Mobile Menu */}
@@ -168,53 +152,37 @@ const Navbar = () => {
           )}
 
           <ul className="space-y-4">
-            <li>
-              <Link href="/" onClick={toggleMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/Meetings" onClick={toggleMobileMenu}>
-                Meetings
-              </Link>
-            </li>
-            <li>
-              <Link href="/hemophilia" onClick={toggleMobileMenu}>
-                Hemophilia
-              </Link>
-            </li>
-            <li>
-              <Link href="/HemophiliaSymptoms" onClick={toggleMobileMenu}>
-                Symptoms
-              </Link>
-            </li>
-            <li>
-              <Link href="/HemophiliaTreatment" onClick={toggleMobileMenu}>
-                Treatment
-              </Link>
-            </li>
-            <li>
-              <Link href="/Camps" onClick={toggleMobileMenu}>
-                Camps
-              </Link>
-            </li>
-            <li>
-              <Link href="/Contact" onClick={toggleMobileMenu}>
-                Contact
-              </Link>
-            </li>
+            <li><Link href="/" onClick={toggleMobileMenu}>Home</Link></li>
+            <li><Link href="/Meetings" onClick={toggleMobileMenu}>Meetings</Link></li>
+            <li><Link href="/hemophilia" onClick={toggleMobileMenu}>Hemophilia</Link></li>
+            <li><Link href="/HemophiliaSymptoms" onClick={toggleMobileMenu}>Symptoms</Link></li>
+            <li><Link href="/HemophiliaTreatment" onClick={toggleMobileMenu}>Treatment</Link></li>
+            <li><Link href="/Camps" onClick={toggleMobileMenu}>Camps</Link></li>
+            <li><Link href="/Contact" onClick={toggleMobileMenu}>Contact</Link></li>
+
             <AdminGuard>
               <li>
-                <Link
-                  href="/AdminPanel/FactorInformation"
-                  onClick={toggleMobileMenu}
-                >
-                  <button className="bg-slate-400 text-center text-white py-1 px-4 rounded-md w-full font-semibold">
+                <Link href="/AdminPanel/FactorInformation" onClick={toggleMobileMenu}>
+                  <button className="bg-slate-400 text-white py-1 px-4 rounded-md w-full font-semibold">
                     Admin
                   </button>
                 </Link>
               </li>
             </AdminGuard>
+
+            {isInstallable && (
+              <li>
+                <button
+                  onClick={() => {
+                    toggleMobileMenu();
+                    installApp();
+                  }}
+                  className="bg-green-700 text-white py-2 px-4 w-full rounded-md mt-4 font-semibold"
+                >
+                  📲 Install App
+                </button>
+              </li>
+            )}
           </ul>
 
           <button

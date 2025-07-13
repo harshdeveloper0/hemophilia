@@ -1,51 +1,53 @@
-import React from "react";
+"use client";
+
+import Image from "next/image";
+
+const treatments = [
+  {
+    title: "रिप्लेसमेंट थेरेपी (Replacement Therapy)",
+    description:
+      "इसमें कमी वाले क्लॉटिंग फैक्टर VIII या IX को इंजेक्शन के माध्यम से सीधे रक्तप्रवाह में प्रविष्ट किया जाता है...",
+    image:
+      "https://5.imimg.com/data5/SELLER/Default/2021/8/OY/BB/VC/37240812/recombinant-factor-viii.jpg",
+  },
+  {
+    title: "प्रोफिलैक्सिस (Prophylaxis)",
+    description:
+      "यह निवारक उपचार है, जिसमें नियमित अंतराल पर क्लॉटिंग फैक्टर के इंजेक्शन दिए जाते हैं...",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeQDmxqsHFxJ34sIxIrBzps5gfL3HE4fjCDg&s",
+  },
+  {
+    title: "डेस्मोप्रेसिन (Desmopressin)",
+    description:
+      "यह सिंथेटिक हार्मोन है, जो हल्के हीमोफीलिया ए के मरीजों में क्लॉटिंग फैक्टर VIII के स्तर को बढ़ाता है...",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSOQZh7s8Bv4oTNSz53YfYPB7u-lgar4OZQQ&s",
+  },
+  {
+    title: "जीन थेरेपी (Gene Therapy)",
+    description:
+      "इस नई तकनीक में जीन को संशोधित किया जाता है ताकि शरीर क्लॉटिंग फैक्टर का उत्पादन कर सके...",
+    image:
+      "https://directorsblog.nih.gov/wp-content/uploads/2021/11/Factor-VIII-clotting-factor-small-1.jpg",
+  },
+  {
+    title: "एंटीफाइब्रिनोलिटिक थेरेपी (Antifibrinolytic Therapy)",
+    description:
+      "यह थेरेपी रक्त के थक्के को टूटने से बचाने के लिए दी जाती है...",
+    image:
+      "https://elearning.wfh.org/wp-content/uploads/2017/02/Factor-Replacement-Therapy-Schematic_ar.png",
+  },
+  {
+    title: "इम्यून टॉलरेंस थेरेपी (Immune Tolerance Therapy)",
+    description:
+      "इस थेरेपी का उपयोग तब किया जाता है जब शरीर क्लॉटिंग फैक्टर के खिलाफ एंटीबॉडी बनाता है...",
+    image:
+      "https://www.frontiersin.org/files/Articles/521107/fimmu-11-00476-HTML/image_m/fimmu-11-00476-g001.jpg",
+  },
+];
 
 const HemophiliaTreatment = () => {
-  const treatments = [
-    {
-      title: "रिप्लेसमेंट थेरेपी (Replacement Therapy)",
-      description:
-        "इसमें कमी वाले क्लॉटिंग फैक्टर VIII या IX को इंजेक्शन के माध्यम से सीधे रक्तप्रवाह में प्रविष्ट किया जाता है, जिससे रक्तस्राव को रोका जा सके। यह हीमोफीलिया के उपचार का सबसे सामान्य तरीका है।",
-      image:
-        "https://5.imimg.com/data5/SELLER/Default/2021/8/OY/BB/VC/37240812/recombinant-factor-viii.jpg",
-    },
-    {
-      title: "प्रोफिलैक्सिस (Prophylaxis)",
-      description:
-        "यह निवारक उपचार है, जिसमें नियमित अंतराल पर क्लॉटिंग फैक्टर के इंजेक्शन दिए जाते हैं ताकि स्वतःस्फूर्त रक्तस्राव की घटनाओं को रोका जा सके। यह विशेष रूप से बच्चों के लिए महत्वपूर्ण है।",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeQDmxqsHFxJ34sIxIrBzps5gfL3HE4fjCDg&s",
-    },
-    {
-      title: "डेस्मोप्रेसिन (Desmopressin)",
-      description:
-        "यह सिंथेटिक हार्मोन है, जो हल्के हीमोफीलिया ए के मरीजों में क्लॉटिंग फैक्टर VIII के स्तर को बढ़ाता है। इसे इंजेक्शन या नेजल स्प्रे के रूप में दिया जाता है।",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSOQZh7s8Bv4oTNSz53YfYPB7u-lgar4OZQQ&s",
-    },
-    {
-      title: "जीन थेरेपी (Gene Therapy)",
-      description:
-        "इस नई तकनीक में जीन को संशोधित किया जाता है ताकि शरीर क्लॉटिंग फैक्टर का उत्पादन कर सके। यह उपचार के क्षेत्र में एक क्रांतिकारी कदम है और स्थायी इलाज की संभावना प्रदान करता है।",
-      image:
-        "https://directorsblog.nih.gov/wp-content/uploads/2021/11/Factor-VIII-clotting-factor-small-1.jpg",
-    },
-    {
-      title: "एंटीफाइब्रिनोलिटिक थेरेपी (Antifibrinolytic Therapy)",
-      description:
-        "यह थेरेपी रक्त के थक्के को टूटने से बचाने के लिए दी जाती है। इसका उपयोग आमतौर पर दंत चिकित्सा प्रक्रियाओं या अन्य सर्जरी के दौरान किया जाता है।",
-      image:
-        "https://elearning.wfh.org/wp-content/uploads/2017/02/Factor-Replacement-Therapy-Schematic_ar.png",
-    },
-    {
-      title: "इम्यून टॉलरेंस थेरेपी (Immune Tolerance Therapy)",
-      description:
-        "इस थेरेपी का उपयोग तब किया जाता है जब शरीर क्लॉटिंग फैक्टर के खिलाफ एंटीबॉडी बनाता है। इसमें नियमित रूप से उच्च खुराक वाले क्लॉटिंग फैक्टर दिए जाते हैं।",
-      image:
-        "https://www.frontiersin.org/files/Articles/521107/fimmu-11-00476-HTML/image_m/fimmu-11-00476-g001.jpg",
-    },
-  ];
-
   return (
     <section className="py-16 bg-gray-100">
       <div className="container mx-auto px-4">
@@ -58,16 +60,20 @@ const HemophiliaTreatment = () => {
               key={index}
               className="bg-white rounded-lg shadow-md overflow-hidden"
             >
-              <img
-                src={treatment.image}
-                alt={treatment.title}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative w-full h-36">
+                <Image
+                  src={treatment.image}
+                  alt={treatment.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-t-lg"
+                />
+              </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-red-600 mb-2">
                   {treatment.title}
                 </h3>
-                <p className="text-gray-700">{treatment.description}</p>
+                <p className="text-gray-700 text-sm">{treatment.description}</p>
               </div>
             </div>
           ))}
