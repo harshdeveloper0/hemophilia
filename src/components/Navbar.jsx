@@ -70,18 +70,7 @@ const Navbar = () => {
         <li>
           <Link href="/Contact">Contact</Link>
         </li>
-        <AdminGuard>
-          <li>
-            <Link
-              href="/adminPanel/FactorInformation"
-              onClick={toggleMobileMenu}
-            >
-              <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
-                Admin
-              </button>
-            </Link>
-          </li>
-        </AdminGuard>
+        
 
         {session && (
           <li>
@@ -115,6 +104,18 @@ const Navbar = () => {
             </button>
           )}
         </li>
+        {/* <AdminGuard> */}
+          <li>
+            <Link
+              href="/AdminPanel/FactorInformation"
+              onClick={toggleMobileMenu}
+            >
+              <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
+                Admin
+              </button>
+            </Link>
+          </li>
+        {/* </AdminGuard> */}
       </ul>
 
       {/* Hamburger / Cross Button */}
@@ -202,10 +203,10 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
-            <AdminGuard>
+            {/* <AdminGuard> */}
               <li>
                 <Link
-                  href="/adminPanel/FactorInformation"
+                  href="/AdminPanel/FactorInformation"
                   onClick={toggleMobileMenu}
                 >
                   <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
@@ -213,7 +214,7 @@ const Navbar = () => {
                   </button>
                 </Link>
               </li>
-            </AdminGuard>
+            {/* </AdminGuard> */}
           </ul>
 
           <button
