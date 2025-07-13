@@ -30,7 +30,7 @@ const Hemophilia = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 mt-10 rounded-2xl bg-gradient-to-br from-white to-red-50 shadow-lg">
+    <div className="max-w-5xl mx-auto px-6 py-10 rounded-2xl bg-gradient-to-br from-white to-red-50 shadow-lg">
       <h1 className="text-4xl font-bold text-center text-red-600 mb-10">
         हिमोफीलिया: एक सम्पूर्ण जानकारी
       </h1>

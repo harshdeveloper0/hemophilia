@@ -1,11 +1,10 @@
 import React from "react";
 
 const Camps = () => {
-  // Array of image URLs
   const campImages = Array.from({ length: 35}, (_, i) => `/images/camps/camp${i + 1}.jpeg`);
 
   return (
-    <div className="py-12 px-4 bg-gradient-to-r from-pink-200 to-red-100 mt-7">
+    <div className="py-12 px-4 bg-gradient-to-r from-pink-200 to-red-100">
       <h2 className="text-3xl font-bold text-center text-red-600 mb-8">
         Hemophilia Awareness Camps
       </h2>

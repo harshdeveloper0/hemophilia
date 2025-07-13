@@ -165,6 +165,6 @@ export default function page() {
         ))}
       </div>
     </main>
-    </AdminGuard>
+     </AdminGuard>
   );
 }

@@ -91,14 +91,14 @@ const Navbar = () => {
           {session ? (
             <button
               onClick={() => signOut()}
-              className="bg-white text-red-500 py-2 px-4 rounded-md font-semibold"
+              className="bg-white text-red-500 py-1 px-4 rounded-md font-semibold"
             >
               Log out
             </button>
           ) : (
             <button
               onClick={() => signIn()}
-              className="bg-white text-red-500 py-2 px-4 rounded-md font-semibold"
+              className="bg-white text-red-500 py-1 px-4 rounded-md font-semibold"
             >
               Login
             </button>
@@ -110,7 +110,7 @@ const Navbar = () => {
               href="/AdminPanel/FactorInformation"
               onClick={toggleMobileMenu}
             >
-              <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
+              <button className="bg-zinc-600 text-white text-center py-1 px-4 rounded-md w-full font-semibold">
                 Admin
               </button>
             </Link>
@@ -209,7 +209,7 @@ const Navbar = () => {
                   href="/AdminPanel/FactorInformation"
                   onClick={toggleMobileMenu}
                 >
-                  <button className="bg-white text-red-500 py-2 px-4 rounded-md w-full text-left font-semibold">
+                  <button className="bg-slate-400 text-center text-white py-1 px-4 rounded-md w-full font-semibold">
                     Admin
                   </button>
                 </Link>
